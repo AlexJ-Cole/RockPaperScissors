@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  <script>
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function computerPlay() {
+        let rand = Math.random();
+        if (rand < 0.34) {
+            return "rock";
+        } else if (rand < 0.67) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+
+    }
+
+    function playGame(playerSelection, computerSelection) {
+      playerSelection = playerSelection.toLowerCase();
+      computerSelection = computerSelection.toLowerCase();
+      if (playerSelection === computerSelection) {
+        console.log(`Tie! Current score: ${ playerScore }(You!) - ${computerScore}.`);
+      } else if (playerSelection === "rock" && computerSelection === "scissors" || 
+                 playerSelection === "paper" && computerSelection === "rock" || 
+                 playerSelection === "scissors" && computerSelection === "rock") {
+          playerScore++;           
+          console.log(`You win this round: ${ playerSelection } beats ${ computerSelection }! Current score: ${ playerScore }(You!) - ${computerScore}.`);
+      } else {
+          computerScore++;
+          console.log(`You lose cocksucker: ${ playerSelection } beats ${ computerSelection }! Current score: ${ playerScore }(You!) - ${ computerScore }.`);
+      }
+    }
+
+    function game() {
+        for (let n = 0; n < 5; n++) {
+          takeTurn();
+        }
+        console.log(`${ checkWinner() }! Score: ${ calcScore() }`);
+    }
+
+    function checkWinner() {
+      if (playerScore === computerScore) {
+          return "Tie";
+      } else if (playerScore > computerScore) {
+          return "You win";
+      } else {
+          return "You lose";
+      }
+    }
+
+    function calcScore() {
+        let maxScore = Math.max(playerScore, computerScore);
+        let minScore = Math.min(playerScore, computerScore);
+        return `${ maxScore } - ${minScore}`;
+    }
+
+    function takeTurn() {
+        let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+          if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+              playGame(playerSelection, computerPlay());
+          } else {
+              takeTurn();
+          }
+    }
+
+  </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
