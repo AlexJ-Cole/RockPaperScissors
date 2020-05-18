@@ -55,7 +55,7 @@
         turn.appendChild(para);
       } else if (playerSelection === "Rock" && computerSelection === "Scissors" || 
                  playerSelection === "Paper" && computerSelection === "Rock" || 
-                 playerSelection === "Rock" && computerSelection === "Scissors") {
+                 playerSelection === "Scissors" && computerSelection === "Paper") {
           playerScore++;           
           para.textContent = `You win this round! | ${ playerSelection } beats ${ computerSelection } | You: ${ playerScore } - CPU: ${computerScore}.`;
           turn.appendChild(para);
